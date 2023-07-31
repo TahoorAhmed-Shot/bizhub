@@ -4,14 +4,11 @@ import "@/styles/globals.css";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
 import axios from "axios";
-import Spinner from "@/components/Spinner";
 import { Suspense, useEffect, useState } from "react";
 import Topbar from "@/components/Topbar";
 import { deleteCookie, setCookie } from "cookies-next";
 import LoadingBar from "react-top-loading-bar";
 import Previous from "@/components/Previous";
-import { Elsie } from "next/font/google";
-import LazyLoad from "react-lazyload";
 import React from "react";
 ("use strict");
 export default function App({ Component, pageProps }) {

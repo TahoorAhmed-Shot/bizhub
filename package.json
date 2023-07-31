@@ -21,7 +21,6 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.8.0",
     "react-infinite-scroll-component": "^6.1.0",
-    "react-lazyload": "^3.2.0",
     "react-responsive": "^9.0.2",
     "react-slick": "^0.29.0",
     "react-slideshow-image": "^4.2.1",
