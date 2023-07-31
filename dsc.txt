@@ -1,0 +1,20 @@
+Hy I'm Tahoor, an experienced MERN Stack developer specializing in MongoDB, Express.js, React.js, and Node.js. With over 2 years of experience as a full-stack developer.I have a strong track record of building responsive, efficient, and scalable web applications. I excel in creating RESTful APIs and ensuring seamless integration between the frontend and backend.
+
+My Skills
+
+React.js
+Next.js
+Node.js
+Express.js
+JavaScript
+TypeScript
+HTML
+CSS
+Bootstrap
+Tailwind
+MongoDB
+Google APIs
+Payment gateway
+
+
+Feel free to make any further adjustments to fit your personal style and preferences.
