@@ -26,6 +26,9 @@ const nextConfig = {
   async redirects() {
     return [];
   },
+  images: {
+    unoptimized: true,
+  },
 };
 
 module.exports = nextConfig;
