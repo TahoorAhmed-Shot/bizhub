@@ -2,19 +2,16 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { CiLogout } from "react-icons/ci";
-import { MdOutlinePostAdd} from "react-icons/md";
+import { MdOutlinePostAdd } from "react-icons/md";
 import { TbMessageReport } from "react-icons/tb";
 import { RxDashboard } from "react-icons/rx";
-import {  BsFilePost } from "react-icons/bs";
+import { BsFilePost } from "react-icons/bs";
 import { useState } from "react";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { AiOutlinePlus, AiOutlineSetting } from "react-icons/ai";
 import { BiMessageRounded } from "react-icons/bi";
 import { HiOutlineUser } from "react-icons/hi";
-function Navbar({
-  myUser,
-  logout,
-}) {
+function Navbar({ myUser, logout }) {
   const [togel, togeldrop] = useState(false);
   const [mobileUserToggel, setMobileUserToggel] = useState(false);
   let HOST = process.env.NEXT_PUBLIC_HOST;
@@ -24,8 +21,8 @@ function Navbar({
 
   return (
     <>
-      <div className=" flex py-4 max-w-[86.5rem] px-0.5 lg:px-5  mx-auto lg:justify-start justify-center align-middle  bg-white/80  items-center sticky top-0 z-20 opacity-100  ">
-        <div className=" flex    lg:flex-1   items-center align-middle  ">
+      <div className=" flex py-4 max-w-[86.5rem] px-0.5 lg:px-6 mx-auto lg:justify-start justify-center align-middle  bg-white/80  items-center sticky top-0 z-20 opacity-100  ">
+        <div className=" flex    lg:flex-1  ml-1 items-center align-middle  ">
           <Link href={"/"}>
             <div className="flex   ">
               <Image src={"/images/bizhub.png"} width={120} height={2}></Image>
@@ -46,9 +43,12 @@ function Navbar({
           {myUser.token && (
             <div className="sm:block hidden">
               <Link href={"/createPost"}>
-                <div className="md:font-semibold md:text-base mr-1.5   uppercase items-center  px-3.5 py-1  bg-whit border-slate-900 border-2 rounded-full text-green-600 ">
-                  Create Post +
-                </div>{" "}
+                <div className="md:font-semibold md:text-base  flex  uppercase items-center  px-3.5 py-1   border-slate-900 border-2 rounded-full text-green-600 ">
+                  Create Post
+                  <i className="ml-1">
+                    <AiOutlinePlus />
+                  </i>
+                </div>
               </Link>
             </div>
           )}

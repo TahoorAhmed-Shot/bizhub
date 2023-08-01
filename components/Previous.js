@@ -11,7 +11,7 @@ function Previous({ loading }) {
           onClick={() => {
             router.back();
           }}
-          className="  px-4  py-4 md:mx-6 mx-2 hover:bg-slate-50 rounded-full cursor-pointer"
+          className="  px-4 md:px-1 py-4 md:mx-6 mx-2 hover:bg-slate-50 rounded-full cursor-pointer"
         >
           {!loading && (
             <span className="flex ">

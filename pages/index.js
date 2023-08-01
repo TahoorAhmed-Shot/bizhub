@@ -316,36 +316,39 @@ export default function Home({
         onClick={() => setQuery("")}
         className="min-h-screen max-w-[85rem] mx-auto  "
       >
-        <div className=" w-full pt-6 pb-2  md:px-2.5 px-1">
+        <div className=" w-full pt-6 pb-2  md:px-2.5 px-2">
           <div className=" mx-auto">
-            <div className="flex justify-between flex-wrap mx-1 sm:pb-0  pb-2 px-1  items-center align-middle cursor-pointer">
-              {initailState ? (
-                <div
-                  disabled={loading}
-                  onClick={() => {
-                    setTimeout(() => {
-                      router.query = 0;
-                      setInitialState(0);
-                    }, 1000);
-                  }}
-                  className="  px-3 py-2  text-center bg-blend-saturation text-white  z-10 font-medium  lg:w-15 xl:w-[13rem] w-[11rem] border-2 rounded-md bg-green-600 uppercase border-green-700 "
-                >
-                  Job near by
-                </div>
-              ) : (
-                <div
-                  disabled={loading}
-                  onClick={() => {
-                    setTimeout(() => {
-                      router.query = 1;
-                      setInitialState(1);
-                    }, 1000);
-                  }}
-                  className="  px-3 py-2  text-center bg-blend-saturation text-white  z-10  font-medium lg:w-15 xl:w-[13rem] w-[11rem] border-2 rounded-md bg-green-600 uppercase border-green-700 "
-                >
-                  Services near by
-                </div>
-              )}
+            <div className="flex flex-1 flex-wrap mx-1 sm:pb-0  pb-2   items-center align-middle ">
+              <div className="flex-1">
+                {initailState ? (
+                  <div
+                    disabled={loading}
+                    onClick={() => {
+                      setTimeout(() => {
+                        router.query = 0;
+                        setInitialState(0);
+                      }, 1000);
+                    }}
+                    className="  px-3 py-2 cursor-pointer text-center bg-blend-saturation text-white  z-10 font-medium  lg:w-15 xl:w-[13rem] w-[11rem] border-2 rounded-md bg-green-600 uppercase border-green-700 "
+                  >
+                    Job near by
+                  </div>
+                ) : (
+                  <div
+                    disabled={loading}
+                    onClick={() => {
+                      setTimeout(() => {
+                        router.query = 1;
+                        setInitialState(1);
+                      }, 1000);
+                    }}
+                    className="  px-3 py-2 cursor-pointer text-center bg-blend-saturation text-white  z-10  font-medium lg:w-15 xl:w-[13rem] w-[11rem] border-2 rounded-md bg-green-600 uppercase border-green-700 "
+                  >
+                    Services near by
+                  </div>
+                )}
+              </div>
+
               <div className="text-center  sm:mt-0   flex   font-serif uppercase  text-slate-800     ">
                 <button
                   className="py-3 bg-white border-slate-800 border-2 font-bold px-4 rounded "
@@ -358,8 +361,8 @@ export default function Home({
                 </button>
               </div>
             </div>
-            <div className="flex justify-between flex-wrap sm:mt-5 mt-3 mx-1  sm:pb-0  pb-2 px-1  items-center align-middle">
-              <div className="   lg:pb-0  relative sm:mb-0 ">
+            <div className=" flex flex-wrap sm:mt-5 mt-3 mx-1  sm:pb-0  pb-2   items-center align-middle">
+              <div className="  flex-1  lg:pb-0  relative sm:mb-0 ">
                 <div className="relative   flex    lg:w-80 xl:w-[35rem] w-[16.8rem]  justify-center">
                   <div className="flex  absolute inset-y-0 left-1 items-center pl-2 pointer-events-none">
                     <svg
@@ -513,7 +516,7 @@ export default function Home({
                   {servicesData &&
                     servicesData.map((key, index) => {
                       return (
-                        <div key={index} className="w-[50%] md:w-[16.7rem]  ">
+                        <div key={index} className="w-[50%] md:w-[16.8rem]  ">
                           <Link href={`/postDetail/${key.id}`}>
                             <div className=" relative rounded-lg shadow-lg hover:shadow-xl cursor-pointer overflow-hidden my-2 md:mx-2 mx-1.5">
                               <div className=" relative  ">
@@ -585,7 +588,7 @@ export default function Home({
                   {servicesDataNoAuth &&
                     servicesDataNoAuth.map((key, index) => {
                       return (
-                        <div key={index} className="w-[50%] md:w-[16.7rem]  ">
+                        <div key={index} className="w-[50%] md:w-[16.8rem]  ">
                           <Link href={`/postDetail/${key.id}`}>
                             <div className=" relative rounded-lg shadow-lg hover:shadow-xl cursor-pointer overflow-hidden my-2 md:mx-2 mx-1.5">
                               <div className=" relative  ">
@@ -655,10 +658,10 @@ export default function Home({
         </div>
 
         {categoryToggel && (
-          <div class="fixed top-0 left-0 right-0 z-50    backdrop-blur-sm  filter bg-blend-color-burn w-full p-3 overflow-hidden  md:inset-0  ">
+          <div class="fixed top-0 left-0 right-0 z-50   backdrop-blur-sm  filter bg-blend-color-burn w-full p-3 overflow-hidden  md:inset-0  ">
             <div class="relative w-full max-w-2xl  mx-auto   justify-center  ">
               <div className="flex  justify-center mx-auto min-h-screen  md:items-center items-start   ">
-                <div className=" relative md:py-10 lg:px-16 md:px-6 py-9 px-6  overflow-y-auto    bg-white opacity-100 rounded-xl shadow-2xl shadow-current w-full">
+                <div className=" relative md:py-10 lg:px-16 md:px-6 py-9 px-6      bg-white opacity-100 rounded-xl shadow-2xl shadow-current w-full">
                   <div
                     onClick={() => {
                       setCategoryToggel(false);
