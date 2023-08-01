@@ -91,7 +91,7 @@ function login({ tostError, tostSuccess, allservices }) {
             theme="light"
           />
           <div className="flex justify-center items-center flex-wrap h-full  text-gray-800">
-            <div className="md:w-1/2 w-5/6 lg:w-1/3  xl:w-1/4 m-auto p-4  md:p-6 rounded-md shadow-xl">
+            <div className="md:w-1/2 w-[95%] lg:w-1/3  xl:w-1/4 m-auto p-4  md:p-6 rounded-md shadow-xl">
               <h1 className="mb-7 mt-4 text-center text-2xl uppercase sm:text-3xl  font-semibold   text-slate-700">
                 {" "}
                 Welcome to Bizhub
