@@ -24,8 +24,8 @@ function Navbar({
 
   return (
     <>
-      <div className=" flex py-5 max-w-[88rem]   mx-auto lg:justify-start justify-center align-middle  bg-white/80  items-center sticky top-0 z-20 opacity-100  ">
-        <div className=" flex    lg:flex-1  items-center align-middle  ">
+      <div className=" flex py-4 max-w-[86.5rem] px-0.5 lg:px-5  mx-auto lg:justify-start justify-center align-middle  bg-white/80  items-center sticky top-0 z-20 opacity-100  ">
+        <div className=" flex    lg:flex-1   items-center align-middle  ">
           <Link href={"/"}>
             <div className="flex   ">
               <Image src={"/images/bizhub.png"} width={120} height={2}></Image>
@@ -46,7 +46,7 @@ function Navbar({
           {myUser.token && (
             <div className="sm:block hidden">
               <Link href={"/createPost"}>
-                <div className="md:font-semibold md:text-base mr-1   font-serif items-center  px-3.5 py-1  bg-white/40 border-slate-900 border-2 rounded-full text-green-600 ">
+                <div className="md:font-semibold md:text-base mr-1.5   uppercase items-center  px-3.5 py-1  bg-whit border-slate-900 border-2 rounded-full text-green-600 ">
                   Create Post +
                 </div>{" "}
               </Link>
@@ -147,7 +147,7 @@ function Navbar({
                       ? HOST + myUser.image
                       : "https://www.olx.com.pk/assets/iconProfilePicture.7975761176487dc62e25536d9a36a61d.png"
                   }
-                  style={{ height: "44px", width: "44px" }}
+                  style={{ height: "45.5px", width: "45.5px" }}
                   className=" rounded-full "
                   alt=""
                 />

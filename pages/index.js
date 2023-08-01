@@ -193,9 +193,7 @@ export default function Home({
       } else {
         setServiceLocation([]);
       }
-    } catch (err) {
-
-    }
+    } catch (err) {}
   };
   let serviceLocationPlaceInfo = async (id) => {
     axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {});
@@ -229,9 +227,7 @@ export default function Home({
         setPage(1);
         await allservicesNoToken();
       }
-    } catch (err) {
-   
-    }
+    } catch (err) {}
   };
   let serviceFilterWithOutAuth = async () => {
     axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {});
@@ -252,9 +248,7 @@ export default function Home({
     }
   };
   let FilterServicesCategories = async () => {
-    axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {
-    
-    });
+    axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {});
     setLoading(true);
 
     let url = `${HOST}/api/categories-show`;
@@ -272,9 +266,7 @@ export default function Home({
     setLoading(false);
   };
   let FilterServicesCategoriesNoToken = async () => {
-    axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {
-   
-    });
+    axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {});
     setLoading(true);
 
     let url = `${HOST}/api/categories-without-auth`;
@@ -322,9 +314,9 @@ export default function Home({
       </Head>
       <div
         onClick={() => setQuery("")}
-        className="min-h-screen max-w-6xl mx-auto  "
+        className="min-h-screen max-w-[85rem] mx-auto  "
       >
-        <div className=" w-full pt-8 pb-2 md:px-5  ">
+        <div className=" w-full pt-6 pb-2  md:px-2.5 px-1">
           <div className=" mx-auto">
             <div className="flex justify-between flex-wrap mx-1 sm:pb-0  pb-2 px-1  items-center align-middle cursor-pointer">
               {initailState ? (
@@ -336,7 +328,7 @@ export default function Home({
                       setInitialState(0);
                     }, 1000);
                   }}
-                  className="  px-3 py-2  text-center bg-blend-saturation text-white  z-10 font-medium  lg:w-15 xl:w-[13rem] w-[11rem] border-2 rounded-md bg-green-600 uppercase border-slate-900 "
+                  className="  px-3 py-2  text-center bg-blend-saturation text-white  z-10 font-medium  lg:w-15 xl:w-[13rem] w-[11rem] border-2 rounded-md bg-green-600 uppercase border-green-700 "
                 >
                   Job near by
                 </div>
@@ -349,14 +341,14 @@ export default function Home({
                       setInitialState(1);
                     }, 1000);
                   }}
-                  className="  px-3 py-2  text-center bg-blend-saturation text-white  z-10  font-medium lg:w-15 xl:w-[13rem] w-[11rem] border-2 rounded-md bg-green-600 uppercase border-slate-900 "
+                  className="  px-3 py-2  text-center bg-blend-saturation text-white  z-10  font-medium lg:w-15 xl:w-[13rem] w-[11rem] border-2 rounded-md bg-green-600 uppercase border-green-700 "
                 >
                   Services near by
                 </div>
               )}
-              <div className="text-center  sm:mt-0   flex   font-serif uppercase  text-green-600     ">
+              <div className="text-center  sm:mt-0   flex   font-serif uppercase  text-slate-800     ">
                 <button
-                  className="py-3 bg-white border-green-600 border-2 font-bold px-4 rounded "
+                  className="py-3 bg-white border-slate-800 border-2 font-bold px-4 rounded "
                   onClick={() => {
                     ref.current.classList.add("blur-sm");
                     setLocationToggel(true);
@@ -366,12 +358,12 @@ export default function Home({
                 </button>
               </div>
             </div>
-            <div className=" flex justify-between flex-wrap sm:mt-5 mt-3 mx-1  sm:pb-0  pb-2 px-1  items-center align-middle">
+            <div className="flex justify-between flex-wrap sm:mt-5 mt-3 mx-1  sm:pb-0  pb-2 px-1  items-center align-middle">
               <div className="   lg:pb-0  relative sm:mb-0 ">
-                <div className="relative   flex    lg:w-80 xl:w-[35rem] w-[15.8rem]  justify-center">
-                  <div className="flex  absolute inset-y-0 left-2 items-center pl-2 pointer-events-none">
+                <div className="relative   flex    lg:w-80 xl:w-[35rem] w-[16.8rem]  justify-center">
+                  <div className="flex  absolute inset-y-0 left-1 items-center pl-2 pointer-events-none">
                     <svg
-                      className="w-5 h-8 text-gray-600 "
+                      className="w-5 h-8 text-slate-900 focus:text-green-600 "
                       fill="currentColor"
                       viewBox="0 0 20 20"
                       xmlns="http://www.w3.org/2000/svg"
@@ -387,14 +379,14 @@ export default function Home({
                     type="search"
                     name="search"
                     id="topbar-search"
-                    className="outline-none  border-2 border-slate-900 focus:border-none text-gray-800 sm:text-sm rounded-md focus:ring-green-600 focus:ring-2 block w-full pl-10 px-3 py-2 md:py-2.5"
+                    className="outline-none  border-2 border-slate-800 focus:border-none text-slarte-900 sm:text-sm rounded-md focus:ring-slate-950 focus:ring-2 block w-full pl-10 px-3 py-2 md:py-2.5"
                     placeholder="Search..."
                     value={query}
                     onChange={onSearch}
                   />
                 </div>
                 {query && (
-                  <div className=" absolute top-[3.5rem] z-10 divide-y  shadow-2xl   rounded-sm overflow-y-auto scroll-smooth max-h-80    lg:w-80 xl:w-[35rem] w-[15.8rem]  duration-500 transition-opacity   delay-150">
+                  <div className=" absolute top-[3.5rem] z-10 divide-y  shadow-2xl  rounded-sm overflow-y-auto scroll-smooth max-h-80    lg:w-80 xl:w-[35rem] w-[16.8rem]  duration-500 transition-opacity   delay-150">
                     <div className=" text-base font-semibold text-gray-900 ">
                       {serviceFilterData &&
                         serviceFilterData.map((key) => {
@@ -457,9 +449,9 @@ export default function Home({
                 )}
               </div>
 
-              <div className="text-center  sm:mt-0   flex   font-serif uppercase  text-green-600     ">
+              <div className="text-center  sm:mt-0   flex   font-serif uppercase  text-slate-800     ">
                 <button
-                  className="py-3 bg-white border-green-600 border-2 rounded  font-bold px-4"
+                  className="py-3 bg-white border-slate-800 border-2 rounded  font-bold px-4"
                   onClick={() => {
                     ref.current.classList.add("blur-sm");
                     setCategoryToggel(true);
@@ -472,7 +464,7 @@ export default function Home({
           </div>
         </div>
 
-        <div className="md:my-12 my-5 pb-8" ref={ref}>
+        <div className="md:my-10 my-5 pb-8 px-1.5" ref={ref}>
           {loading ? (
             ""
           ) : (
@@ -521,9 +513,9 @@ export default function Home({
                   {servicesData &&
                     servicesData.map((key, index) => {
                       return (
-                        <div key={index} className="w-[50%] md:w-[17.5rem]  ">
+                        <div key={index} className="w-[50%] md:w-[16.7rem]  ">
                           <Link href={`/postDetail/${key.id}`}>
-                            <div className=" relative rounded-lg shadow-lg hover:shadow-xl cursor-pointer overflow-hidden my-2 md:mx-3 mx-1.5">
+                            <div className=" relative rounded-lg shadow-lg hover:shadow-xl cursor-pointer overflow-hidden my-2 md:mx-2 mx-1.5">
                               <div className=" relative  ">
                                 <div className="flex justify-center relative opacity-100 object-contain bottom-0 transition-opacity duration-700 hover:opacity-100 overflow-hidden w-full ">
                                   {!key.images[0] ? (
@@ -593,9 +585,9 @@ export default function Home({
                   {servicesDataNoAuth &&
                     servicesDataNoAuth.map((key, index) => {
                       return (
-                        <div key={index} className="w-[50%] md:w-[17.5rem]  ">
+                        <div key={index} className="w-[50%] md:w-[16.7rem]  ">
                           <Link href={`/postDetail/${key.id}`}>
-                            <div className=" relative rounded-lg shadow-lg hover:shadow-xl cursor-pointer overflow-hidden my-2 md:mx-3 mx-1.5">
+                            <div className=" relative rounded-lg shadow-lg hover:shadow-xl cursor-pointer overflow-hidden my-2 md:mx-2 mx-1.5">
                               <div className=" relative  ">
                                 <div className="flex justify-center opacity-100 object-contain bottom-0 transition-opacity duration-700 hover:opacity-100 overflow-hidden w-full ">
                                   {!key.images[0] ? (
@@ -663,10 +655,10 @@ export default function Home({
         </div>
 
         {categoryToggel && (
-          <div class="fixed top-0 left-0 right-0 z-50    backdrop-blur-sm  filter bg-blend-color-burn w-full p-6 overflow-hidden  md:inset-0  ">
+          <div class="fixed top-0 left-0 right-0 z-50    backdrop-blur-sm  filter bg-blend-color-burn w-full p-3 overflow-hidden  md:inset-0  ">
             <div class="relative w-full max-w-2xl  mx-auto   justify-center  ">
               <div className="flex  justify-center mx-auto min-h-screen  md:items-center items-start   ">
-                <div className=" relative md:py-10 lg:px-16 md:px-6 py-9 px-6   bg-white opacity-100 rounded-xl shadow-2xl shadow-current w-full">
+                <div className=" relative md:py-10 lg:px-16 md:px-6 py-9 px-6  overflow-y-auto    bg-white opacity-100 rounded-xl shadow-2xl shadow-current w-full">
                   <div
                     onClick={() => {
                       setCategoryToggel(false);
@@ -832,7 +824,7 @@ export default function Home({
                       type="search"
                       name="search"
                       id="topbar-search"
-                      className="bg-white border focus:right-2 focus:ring-slate-900 text-gray-900 sm:text-sm rounded block w-full pl-10 px-3 py-2.5"
+                      className="bg-white border focus:right-2 focus:ring-slate-800 text-gray-900 sm:text-sm rounded block w-full pl-10 px-3 py-2.5"
                       placeholder="Search area, city or country..."
                       value={queryLocation}
                       onChange={onSearchLocation}
