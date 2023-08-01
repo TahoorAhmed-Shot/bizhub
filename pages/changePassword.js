@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { HiMail } from "react-icons/hi";
 import { MdPassword } from "react-icons/md";
 import { ImEye, ImEyeBlocked } from "react-icons/im";
 import axios from "axios";

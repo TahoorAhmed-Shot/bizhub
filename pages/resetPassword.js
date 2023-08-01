@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import axios from "axios";

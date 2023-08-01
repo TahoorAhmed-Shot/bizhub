@@ -1,21 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-import { getCookie } from "cookies-next";
-import { GrLinkPrevious } from "react-icons/gr";
-
 import { useRouter } from "next/router";
 import axios from "axios";
 import Link from "next/link";
 import Spinner from "@/components/Spinner";
-import Images from "next/image";
 function slug({ tostSuccess, tostError, loading, setLoading, myUser }) {
   let HOST = process.env.NEXT_PUBLIC_HOST;
 
   const router = useRouter();
   const { slug } = router.query;
-  const [show, setShow] = useState(false);
-  const [show2, setShow2] = useState(false);
   const [Image, setImage] = useState([]);
   const [detailData, setDetailData] = useState([]);
   const [toogelOffer, setToogelOffer] = useState(false);
@@ -37,9 +31,7 @@ function slug({ tostSuccess, tostError, loading, setLoading, myUser }) {
   let handelOffer = async (e) => {
     e.preventDefault();
 
-    axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {
-      // console.log(response);
-    });
+    axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => { });
     setButtonLoading1(true);
     try {
       let url = `${HOST}/api/send-offer`;

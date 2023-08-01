@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import "react-toastify/dist/ReactToastify.css";
-
 import { useRouter } from "next/router";
 import axios from "axios";
 import { ToastContainer } from "react-toastify";
-import Link from "next/link";
 import Spinner from "@/components/Spinner";
-import { GrLinkPrevious } from "react-icons/gr";
+
 
 function slug({ tostSuccess, tostError, loading, setLoading, setState }) {
   let HOST = process.env.NEXT_PUBLIC_HOST;
@@ -558,47 +556,4 @@ function slug({ tostSuccess, tostError, loading, setLoading, setState }) {
   );
 }
 
-// export async function getServerSideProps(context) {
-//   let loadings = false;
-//   let token = context.req.cookies.authToken;
-//   const { slug } = context.query;
-//   const HOST = process.env.NEXT_PUBLIC_HOST; // Replace with your API host
-
-//   await axios.get(`${HOST}/sanctum/csrf-cookie`);
-//   if (token) {
-//     try {
-//       const url = `${HOST}/api/service-complete/${slug}`;
-//       const params = {
-//         headers: {
-//           "Content-Type": "application/json",
-//           Authorization: "Bearer " + token,
-//         },
-//       };
-
-//       const res = await axios.get(url, params);
-//       const data = await res.data.data;
-//       return {
-//         props: {
-//           detailData: data,
-//           Image: data.images,
-//           loadings,
-//         },
-//       };
-//     } catch (error) {
-//       return {
-//         props: {
-//           error: "An error occurred while fetching the data.",
-//         },
-//       };
-//     }
-//   } else {
-//     return {
-//       props: {
-//         error: "An error occurred while fetching the data.",
-//         detailData: [],
-//         Image: [],
-//       },
-//     };
-//   }
-// }
 export default slug;

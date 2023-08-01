@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
-import { FaEdit } from "react-icons/fa";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -18,13 +17,8 @@ function myAccount({
 }) {
   let router = useRouter();
   let HOST = process.env.NEXT_PUBLIC_HOST;
-  const [toggel, settoggel] = useState(false);
-  const [selectedFile, setSelectedFile] = useState(null);
-  const [imageSrc, setImageSrc] = useState(null);
   const [selectedItems, setSelectedItems] = useState("");
-
   const [reportToggel, setReportToggel] = useState(false);
-
   const [formValue, setFormValue] = useState({
     password: "",
   });

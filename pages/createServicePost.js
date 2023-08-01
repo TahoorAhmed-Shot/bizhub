@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,8 +11,6 @@ function createServerPost({
   tostError,
   tostSuccess,
   gooogle,
-  location,
-  myUser,
   setState,
 }) {
   let router = useRouter();
@@ -52,11 +49,7 @@ function createServerPost({
 
   useEffect(() => {
     serviceLocationHandel();
-    if (queryLocation.length > 0) {
-      ref.current.classList.add("blur-md");
-    } else {
-      ref.current.classList.remove("blur-md");
-    }
+   
   }, [queryLocation]);
 
   const [formValue, setFormValue] = useState({
@@ -70,7 +63,7 @@ function createServerPost({
     let getSearchData = e.target.value;
     setQueryLocation(getSearchData);
   };
-  const googleApiKey = "AIzaSyCgYbHR3oi_8pgbqxkexNvGnvD-FCIFMr8";
+
   let serviceLocationHandel = async () => {
     axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {});
     try {
@@ -176,6 +169,9 @@ function createServerPost({
       });
     }
   }
+   function click() {
+     ref.current.click;
+   }
   return (
     <>
       <section className="my-3 min-h-screen">
@@ -192,18 +188,18 @@ function createServerPost({
             pauseOnHover
             theme="light"
           />
-          <div
-            ref={ref}
-            className="flex justify-center items-center flex-wrap h-full  text-gray-800"
-          >
-            <div className="sm:w-5/6 md:w-1/2 lg:w-2/5 mx-auto md:p-10 p-6 rounded-md shadow-xl">
+          <div className="flex justify-center items-center flex-wrap h-full  text-gray-800">
+            <div className="sm:w-5/6 md:w-1/2 lg:w-2/5 w-full mx-auto md:p-10 p-6 rounded-md shadow-xl">
               <form onSubmit={handel}>
                 <div className="flex items-center justify-center w-full mb-3">
                   <label
                     htmlFor="dropzone-file"
                     className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50"
                   >
-                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                    <div
+                      onClick={click}
+                      className="flex flex-col items-center justify-center pt-5 pb-6"
+                    >
                       <svg
                         aria-hidden="true"
                         className="w-10 h-10 mb-3 text-gray-400"
@@ -235,6 +231,8 @@ function createServerPost({
                         type="file"
                         onChange={handleFileChange}
                         className="relative mx-auto"
+                        hidden
+                        ref={ref}
                       />
                     </div>
                     <div className="flex overflow-x-hidden   ">
@@ -311,8 +309,6 @@ function createServerPost({
                 <div
                   className="mb-3"
                   onClick={() => {
-                    ref.current.classList.add("blur-md");
-
                     if (locationToggel) {
                       setLocationToggel(false);
                     } else {
@@ -339,7 +335,7 @@ function createServerPost({
 
                 <button
                   disabled={loading}
-                  className="inline-block px-7 sm:py-3 py-2 bg-green-600 text-white my-2  font-medium text-lg leading-snug  rounded shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out w-full"
+                  className="inline-block px-7 mt-4 sm:py-3 py-2 bg-green-600 text-white my-2  font-medium text-lg leading-snug  rounded shadow-md hover:bg-green-600 hover:shadow-lg focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-800 active:shadow-lg transition duration-150 ease-in-out w-full"
                 >
                   {loading ? "Loading... " : "Post"}
                 </button>
@@ -348,14 +344,13 @@ function createServerPost({
           </div>
         </div>
         {locationToggel && (
-          <div className="fixed inset-0 my-9 z-50 overflow-y-auto bg-blend-color-burn">
-            <div className="flex min-h-full xl:w-3/6 w-[90%] mx-auto items-end justify-center p-4 text-center sm:items-center sm:p-0">
-              <div className="flex  justify-center z-10 m-auto ">
-                <div className=" relative md:py-10 lg:px-16 px-6 py-9    bg-white shadow-2xl shadow-current w-full">
+          <div class="fixed top-0 left-0 right-0 z-50    backdrop-blur-sm  filter bg-blend-color-burn  w-full p-6  overflow-hidden  md:inset-0 ">
+            <div class="relative w-full max-w-2xl  mx-auto   justify-center  ">
+              <div className="flex w-full justify-center mx-auto min-h-screen    items-center     ">
+                <div className=" relative md:py-10 lg:px-16 md:px-6 py-9 px-6  mx-auto bg-white  rounded-xl shadow-2xl shadow-current w-full ">
                   <div
                     onClick={() => {
                       setLocationToggel(false);
-                      ref.current.classList.remove("blur-md");
                     }}
                     className="cursor-pointer text-gray-900 absolute right-0 top-0 px-3 py-2.5"
                   >
@@ -381,7 +376,7 @@ function createServerPost({
                       />
                     </svg>
                   </div>
-                  <div className="relative   flex    lg:w-72 xl:w-[40rem] w-[15rem]  justify-center">
+                  <div className="relative   flex    mt-4 justify-center">
                     <div className="flex  absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                       <svg
                         className="w-5 h-8 text-gray-600"

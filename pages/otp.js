@@ -1,4 +1,4 @@
-import Link from "next/link";
+
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
@@ -82,7 +82,7 @@ function otp({ tostError, tostSuccess }) {
 
       let res = await axios.post(url, param);
       let data = await res.data;
-      console.log(data);
+    
       if (data.status) {
         tostSuccess(data.message);
         localStorage.setItem("uniqueId", data.data.uniqueId);

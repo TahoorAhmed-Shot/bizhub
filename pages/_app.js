@@ -10,7 +10,7 @@ import { deleteCookie, setCookie } from "cookies-next";
 import LoadingBar from "react-top-loading-bar";
 import Previous from "@/components/Previous";
 import React from "react";
-("use strict");
+
 export default function App({ Component, pageProps }) {
   const [progress, setProgress] = useState(0);
   const [nav, setNav] = useState(true);
@@ -177,7 +177,7 @@ export default function App({ Component, pageProps }) {
     let myLatitude = localStorage.getItem("lat");
     let myLongitude = localStorage.getItem("lng");
     axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {
-      // console.log(response);
+   
     });
     if (myLatitude && myLongitude) {
       let url = `${HOST}/api/all-services?page=${
@@ -224,9 +224,7 @@ export default function App({ Component, pageProps }) {
     setServicesData([]);
 
     setLoading(true);
-    axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {
-      // console.log(response);
-    });
+    axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {});
     if (myLatitude && myLongitude) {
       let url = `${HOST}/api/service?page=${1}&type=${initailState}${cat}&latitude=${myLatitude}&longitude=${myLongitude}&distance=1000`;
 
@@ -312,10 +310,10 @@ export default function App({ Component, pageProps }) {
       }
     }
   };
-  //  &latitude=${latitude}&longitude=${longitude}&distance=${selectedRadioItems}
+
   let servicesCategories = async () => {
     axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {
-      // console.log(response);
+   
     });
 
     let url = `${HOST}/api/categories-show`;
@@ -336,7 +334,7 @@ export default function App({ Component, pageProps }) {
   let myJob = async () => {
     setLoading(true);
     axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {
-      // console.log(response);
+   
     });
 
     let url = `${HOST}/api/my-services`;
@@ -355,9 +353,7 @@ export default function App({ Component, pageProps }) {
   };
   let myServices = async () => {
     setLoading(true);
-    axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {
-      // console.log(response);
-    });
+    axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {});
 
     let url = `${HOST}/api/my-worker-services`;
     let params = {
@@ -373,9 +369,7 @@ export default function App({ Component, pageProps }) {
     setMyAllServices(data.data);
     setLoading(false);
   };
-
   const apiKey = "AIzaSyB7Ng7-HV7vIkFSF9XEThw_O2PSo_196zw";
-
   let gooogle = () => {
     navigator.geolocation.getCurrentPosition(async (position) => {
       const response = await fetch(
@@ -392,11 +386,8 @@ export default function App({ Component, pageProps }) {
       });
     });
   };
-
   const handelGetUser = async () => {
-    axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {
-      // console.log(response);
-    });
+    axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {});
 
     try {
       setLoading(true);

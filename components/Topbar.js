@@ -1,22 +1,7 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { CiLogout } from "react-icons/ci";
-import {
-  MdOutlineClose,
-  MdAccountCircle,
-  MdManageAccounts,
-  MdOutlineManageAccounts,
-} from "react-icons/md";
-import { TbMessageReport } from "react-icons/tb";
-import {
-  AiFillPlusCircle,
-  AiFillMinusCircle,
-  AiOutlineUser,
-} from "react-icons/ai";
-import { BsCart3, BsFilePost } from "react-icons/bs";
-import { useRouter } from "next/router";
-import { useState } from "react";
+
 function Topbar() {
   return (
     <>

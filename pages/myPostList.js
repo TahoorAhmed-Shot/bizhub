@@ -1,17 +1,13 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { CiMenuKebab } from "react-icons/ci";
+
 import {
   BsCloudCheckFill,
-  BsFilePost,
-  BsHandThumbsUp,
-  BsPatchCheckFill,
   BsThreeDots,
 } from "react-icons/bs";
 import { MdManageAccounts, MdThumbUp } from "react-icons/md";
-import { TbMessageReport } from "react-icons/tb";
-import { FiCheckCircle } from "react-icons/fi";
+
 import { FaEdit } from "react-icons/fa";
 import { AiFillCheckCircle, AiFillDelete } from "react-icons/ai";
 import axios from "axios";
@@ -239,7 +235,7 @@ function myPost({
   }
   return (
     <>
-      <section className="min-h-screen">
+      <section className="min-h-screen  ">
         <div className="py-2 px-3">
           <ToastContainer
             position="top-center"
@@ -370,6 +366,7 @@ function myPost({
                                           <a
                                             onClick={() => {
                                               updateMyPost(key);
+                                              
                                             }}
                                             className="block px-4 py-1.5 hover:bg-gray-100 "
                                           >
@@ -844,6 +841,7 @@ function myPost({
                         type="file"
                         onChange={handleFileChange}
                         className="relative mx-auto"
+                        hidden
                       />
                       <div className="flex overflow-x-hidden ">
                         {isServer == true &&
@@ -886,7 +884,7 @@ function myPost({
                       </label>
                       <input
                         required
-                        className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                        className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                         type="text"
                         name="title"
                         onChange={onChange}
@@ -933,7 +931,7 @@ function myPost({
                   </div>
                 </form>
 
-                <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                <div className=" px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                   <button
                     disabled={buttonLoading}
                     onClick={() => {

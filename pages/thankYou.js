@@ -9,7 +9,7 @@ function thankYou() {
 
   return (
     <>
-      {" "}
+    
       {router.query.token ? (
         <div className="min-h-screen">
           <div className="flex items-center min-h-[80vh] overflow-y-hidden justify-center">

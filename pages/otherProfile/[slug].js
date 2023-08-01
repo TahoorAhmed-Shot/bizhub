@@ -2,19 +2,18 @@ import Spinner from "@/components/Spinner";
 import axios from "axios";
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
-import { AiFillDelete } from "react-icons/ai";
-import { BsCloudCheckFill, BsThreeDots } from "react-icons/bs";
-import { FaEdit } from "react-icons/fa";
-import { GoReport } from "react-icons/go";
+
+import {  BsThreeDots } from "react-icons/bs";
+
 import { MdReport } from "react-icons/md";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function myAccount({
-  myUser,
+
   tostSuccess,
   loading,
   setLoading,
-  error,
+ 
   tostError,
 }) {
   let router = useRouter();
@@ -118,7 +117,7 @@ function myAccount({
     } catch (error) {
       setbuttonLoading(false);
 
-      console.log(error);
+    
       tostError(error.response.data.message);
     }
   };

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import { AiFillCamera } from "react-icons/ai";
-import { FaEdit } from "react-icons/fa";
+
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function myAccount({ myUser, tostError, tostSuccess, loading, setLoading }) {
@@ -38,7 +38,7 @@ function myAccount({ myUser, tostError, tostSuccess, loading, setLoading }) {
 
   const handel = async () => {
     axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {
-      // console.log(response);
+    
     });
 
     setLoading(true);
@@ -72,7 +72,7 @@ function myAccount({ myUser, tostError, tostSuccess, loading, setLoading }) {
   const handelUpdateProfile = async (e) => {
     e.preventDefault();
     axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {
-      // console.log(response);
+      
     });
 
     try {

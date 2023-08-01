@@ -33,7 +33,7 @@ function message({ loading, setLoading, tostSuccess, tostError }) {
   }, []);
   let allUsers = async () => {
     axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {
-      // console.log(response);
+   
     });
 
     let url = `${HOST}/api/all-chats-list`;
@@ -49,7 +49,7 @@ function message({ loading, setLoading, tostSuccess, tostError }) {
   };
   let allMessage = async (id) => {
     axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {
-      // console.log(response);
+  
     });
     setLoading(true);
     let url = `${HOST}/api/fetch-chat/${id}`;
@@ -66,7 +66,7 @@ function message({ loading, setLoading, tostSuccess, tostError }) {
   };
   let allMessageAgain = async (id) => {
     axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {
-      // console.log(response);
+   
     });
 
     let url = `${HOST}/api/fetch-chat/${id}`;
@@ -83,7 +83,7 @@ function message({ loading, setLoading, tostSuccess, tostError }) {
   let handelMessage = async () => {
     if (formValue) {
       axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {
-        // console.log(response);
+  
       });
       setMessageLoader(true);
       setTimeout(async () => {

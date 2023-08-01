@@ -4,7 +4,6 @@ import { Inter } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-const inter = Inter({ subsets: ["latin"] });
 import Spinner from "@/components/Spinner";
 import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "axios";
@@ -195,7 +194,7 @@ export default function Home({
         setServiceLocation([]);
       }
     } catch (err) {
-      console.log(err);
+
     }
   };
   let serviceLocationPlaceInfo = async (id) => {
@@ -231,7 +230,7 @@ export default function Home({
         await allservicesNoToken();
       }
     } catch (err) {
-      console.log(err);
+   
     }
   };
   let serviceFilterWithOutAuth = async () => {
@@ -254,7 +253,7 @@ export default function Home({
   };
   let FilterServicesCategories = async () => {
     axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {
-      // console.log(response);
+    
     });
     setLoading(true);
 
@@ -274,7 +273,7 @@ export default function Home({
   };
   let FilterServicesCategoriesNoToken = async () => {
     axios.get(`${HOST}/sanctum/csrf-cookie`).then((response) => {
-      // console.log(response);
+   
     });
     setLoading(true);
 
@@ -312,7 +311,7 @@ export default function Home({
     }
   };
   const isSmallDevice = useMediaQuery({ maxWidth: 639 });
-  console.log(selectedItems);
+
   return (
     <>
       <Head>
@@ -323,361 +322,351 @@ export default function Home({
       </Head>
       <div
         onClick={() => setQuery("")}
-        className="min-h-screen max-w-6xl mx-auto "
+        className="min-h-screen max-w-6xl mx-auto  "
       >
-        <div >
-          <div className=" w-full pt-8 pb-2 md:px-3  ">
-            <div className=" mx-auto">
-              <div className="flex justify-between flex-wrap mx-1 sm:pb-0  pb-2 px-1  items-center align-middle cursor-pointer">
-                {initailState ? (
-                  <div
-                    disabled={loading}
-                    onClick={() => {
-                      setTimeout(() => {
-                        router.query = 0;
-                        setInitialState(0);
-                      }, 1000);
-                    }}
-                    className="  px-3 py-2  text-center bg-blend-saturation text-white  z-10 font-medium  lg:w-15 xl:w-[13rem] w-[11rem] border-2 rounded-md bg-green-600 uppercase border-slate-900 "
-                  >
-                    Job near by
-                  </div>
-                ) : (
-                  <div
-                    disabled={loading}
-                    onClick={() => {
-                      setTimeout(() => {
-                        router.query = 1;
-                        setInitialState(1);
-                      }, 1000);
-                    }}
-                    className="  px-3 py-2  text-center bg-blend-saturation text-white  z-10  font-medium lg:w-15 xl:w-[13rem] w-[11rem] border-2 rounded-md bg-green-600 uppercase border-slate-900 "
-                  >
-                    Services near by
-                  </div>
-                )}
-                <div className="text-center  sm:mt-0   flex   font-serif uppercase  text-green-600     ">
-                  <button
-                    className="py-3 bg-white border-green-600 border-2 font-bold px-4 rounded "
-                    onClick={() => {
-                      ref.current.classList.add("blur-sm");
-                      setLocationToggel(true);
-                    }}
-                  >
-                    <MdOutlineMyLocation></MdOutlineMyLocation>
-                  </button>
+        <div className=" w-full pt-8 pb-2 md:px-5  ">
+          <div className=" mx-auto">
+            <div className="flex justify-between flex-wrap mx-1 sm:pb-0  pb-2 px-1  items-center align-middle cursor-pointer">
+              {initailState ? (
+                <div
+                  disabled={loading}
+                  onClick={() => {
+                    setTimeout(() => {
+                      router.query = 0;
+                      setInitialState(0);
+                    }, 1000);
+                  }}
+                  className="  px-3 py-2  text-center bg-blend-saturation text-white  z-10 font-medium  lg:w-15 xl:w-[13rem] w-[11rem] border-2 rounded-md bg-green-600 uppercase border-slate-900 "
+                >
+                  Job near by
                 </div>
-              </div>
-              <div className=" flex justify-between flex-wrap sm:mt-5 mt-3 mx-1  sm:pb-0  pb-2 px-1  items-center align-middle">
-                <div className="   lg:pb-0  relative sm:mb-0 ">
-                  <div className="relative   flex    lg:w-80 xl:w-[53rem] w-[15.8rem]  justify-center">
-                    <div className="flex  absolute inset-y-0 left-2 items-center pl-2 pointer-events-none">
-                      <svg
-                        className="w-5 h-8 text-gray-600 "
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                          clipRule="evenodd"
-                        ></path>
-                      </svg>
-                    </div>
-                    <input
-                      type="search"
-                      name="search"
-                      id="topbar-search"
-                      className="outline-none  border-2 border-slate-900 focus:border-none text-gray-800 sm:text-sm rounded-md focus:ring-green-500 focus:ring-2 block w-full pl-10 px-3 py-2 md:py-2.5"
-                      placeholder="Search..."
-                      value={query}
-                      onChange={onSearch}
-                    />
-                  </div>
-                  {query && (
-                    <div className=" absolute top-[3.5rem] z-10 divide-y  shadow-2xl   rounded-sm overflow-y-auto scroll-smooth max-h-80    lg:w-80 xl:w-[53rem] w-[15.8rem]  duration-500 transition-opacity   delay-150">
-                      <div className=" text-base font-semibold text-gray-900 ">
-                        {serviceFilterData &&
-                          serviceFilterData.map((key) => {
-                            return (
-                              <Link
-                                href={`/postDetail/${key.id}`}
-                                className="flex   bg-white cursor-pointer hover:bg-slate-100    p-2 text-neutral-900"
-                              >
-                                <div className="   flex text-center align-middle items-center my-2 px-2 ">
-                                  <a className="  flex mr-1 m-auto justify-center items-center  focus:text-neutral-900  lg:mt-0">
-                                    {!key.images[0] ? (
-                                      <Image
-                                        height={2}
-                                        width={2}
-                                        src={
-                                          "https://images.olx.com.pk/thumbnails/347296539-240x180.webp"
-                                        }
-                                        style={{
-                                          height: "45px",
-                                          width: "45px",
-                                        }}
-                                        className=" rounded-3xl"
-                                        alt="Bizhub"
-                                      />
-                                    ) : (
-                                      <Image
-                                        height={2}
-                                        width={2}
-                                        src={
-                                          !key.images[0]
-                                            ? "https://images.olx.com.pk/thumbnails/347296539-240x180.webp"
-                                            : HOST + key.images[0].image
-                                        }
-                                        style={{
-                                          height: "45px",
-                                          width: "45px",
-                                        }}
-                                        className=" rounded-3xl"
-                                        alt="Bizhub"
-                                      />
-                                    )}
-                                  </a>
-                                </div>
-                                <div className="flex flex-col align-middle my-2  ">
-                                  <div className="title-font  uppercase flex  sm:text-base  text-sm font-medium  ">
-                                    {key.title.slice(0, 20)}
-                                    {key.title.length > 20 ? "..." : ""}
-                                  </div>
-                                  <div className="title-font    my-[0.120rem]     flex   text-base font-medium  ">
-                                    <sapn className="text-green-600 ">
-                                      $ {key.amount}
-                                    </sapn>
-                                  </div>
-                                </div>
-                              </Link>
-                            );
-                          })}
-                      </div>
-                    </div>
-                  )}
+              ) : (
+                <div
+                  disabled={loading}
+                  onClick={() => {
+                    setTimeout(() => {
+                      router.query = 1;
+                      setInitialState(1);
+                    }, 1000);
+                  }}
+                  className="  px-3 py-2  text-center bg-blend-saturation text-white  z-10  font-medium lg:w-15 xl:w-[13rem] w-[11rem] border-2 rounded-md bg-green-600 uppercase border-slate-900 "
+                >
+                  Services near by
                 </div>
-
-                <div className="text-center  sm:mt-0   flex   font-serif uppercase  text-green-600     ">
-                  <button
-                    className="py-3 bg-white border-green-600 border-2 rounded  font-bold px-4"
-                    onClick={() => {
-                      ref.current.classList.add("blur-sm");
-                      setCategoryToggel(true);
-                    }}
-                  >
-                    <FaFilter></FaFilter>
-                  </button>
-                </div>
+              )}
+              <div className="text-center  sm:mt-0   flex   font-serif uppercase  text-green-600     ">
+                <button
+                  className="py-3 bg-white border-green-600 border-2 font-bold px-4 rounded "
+                  onClick={() => {
+                    ref.current.classList.add("blur-sm");
+                    setLocationToggel(true);
+                  }}
+                >
+                  <MdOutlineMyLocation></MdOutlineMyLocation>
+                </button>
               </div>
             </div>
-          </div>
-          <div className="  py-2 px-1.5  ">
-            <div className="md:my-12 my-8" ref={ref}>
-              {loading ? (
-                ""
-              ) : (
-                <div className="flex justify-center mx-auto ">
-                  {!myUser.token &&
-                    servicesDataNoAuth &&
-                    servicesDataNoAuth &&
-                    servicesDataNoAuth.length == 0 &&
-                    "No Post Available"}
+            <div className=" flex justify-between flex-wrap sm:mt-5 mt-3 mx-1  sm:pb-0  pb-2 px-1  items-center align-middle">
+              <div className="   lg:pb-0  relative sm:mb-0 ">
+                <div className="relative   flex    lg:w-80 xl:w-[35rem] w-[15.8rem]  justify-center">
+                  <div className="flex  absolute inset-y-0 left-2 items-center pl-2 pointer-events-none">
+                    <svg
+                      className="w-5 h-8 text-gray-600 "
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                        clipRule="evenodd"
+                      ></path>
+                    </svg>
+                  </div>
+                  <input
+                    type="search"
+                    name="search"
+                    id="topbar-search"
+                    className="outline-none  border-2 border-slate-900 focus:border-none text-gray-800 sm:text-sm rounded-md focus:ring-green-600 focus:ring-2 block w-full pl-10 px-3 py-2 md:py-2.5"
+                    placeholder="Search..."
+                    value={query}
+                    onChange={onSearch}
+                  />
                 </div>
-              )}
-              {loading ? (
-                ""
-              ) : (
-                <div className="flex justify-center mx-auto text-center w-70">
-                  {myUser.token &&
-                    servicesData &&
-                    servicesData &&
-                    servicesData.length == 0 &&
-                    "No Post Available"}
-                </div>
-              )}
-              {loading ? (
-                <div className="flex justify-center  ">
-                  <span className="flex justify-center  absolute  top-64">
-                    <Spinner></Spinner>
-                  </span>
-                </div>
-              ) : (
-                <InfiniteScroll
-                  dataLength={
-                    !myUser.token
-                      ? servicesDataNoAuth.length
-                      : servicesData.length
-                  }
-                  next={
-                    !myUser.token ? fetchMoreServicesNoToken : fetchMoreServices
-                  }
-                  hasMore={totalResults == null ? false : true}
-                  loader={
-                    <span className=" w-80 mx-auto flex justify-center">
-                      <Spinner></Spinner>
-                    </span>
-                  }
+                {query && (
+                  <div className=" absolute top-[3.5rem] z-10 divide-y  shadow-2xl   rounded-sm overflow-y-auto scroll-smooth max-h-80    lg:w-80 xl:w-[35rem] w-[15.8rem]  duration-500 transition-opacity   delay-150">
+                    <div className=" text-base font-semibold text-gray-900 ">
+                      {serviceFilterData &&
+                        serviceFilterData.map((key) => {
+                          return (
+                            <Link
+                              href={`/postDetail/${key.id}`}
+                              className="flex   bg-white cursor-pointer hover:bg-slate-100    p-2 text-neutral-900"
+                            >
+                              <div className="   flex text-center align-middle items-center my-2 px-2 ">
+                                <a className="  flex mr-1 m-auto justify-center items-center  focus:text-neutral-900  lg:mt-0">
+                                  {!key.images[0] ? (
+                                    <Image
+                                      height={2}
+                                      width={2}
+                                      src={
+                                        "https://images.olx.com.pk/thumbnails/347296539-240x180.webp"
+                                      }
+                                      style={{
+                                        height: "45px",
+                                        width: "45px",
+                                      }}
+                                      className=" rounded-3xl"
+                                      alt="Bizhub"
+                                    />
+                                  ) : (
+                                    <Image
+                                      height={2}
+                                      width={2}
+                                      src={
+                                        !key.images[0]
+                                          ? "https://images.olx.com.pk/thumbnails/347296539-240x180.webp"
+                                          : HOST + key.images[0].image
+                                      }
+                                      style={{
+                                        height: "45px",
+                                        width: "45px",
+                                      }}
+                                      className=" rounded-3xl"
+                                      alt="Bizhub"
+                                    />
+                                  )}
+                                </a>
+                              </div>
+                              <div className="flex flex-col align-middle my-2  ">
+                                <div className="title-font  uppercase flex  sm:text-base  text-sm font-medium  ">
+                                  {key.title.slice(0, 20)}
+                                  {key.title.length > 20 ? "..." : ""}
+                                </div>
+                                <div className="title-font    my-[0.120rem]     flex   text-base font-medium  ">
+                                  <sapn className="text-green-600 ">
+                                    $ {key.amount}
+                                  </sapn>
+                                </div>
+                              </div>
+                            </Link>
+                          );
+                        })}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="text-center  sm:mt-0   flex   font-serif uppercase  text-green-600     ">
+                <button
+                  className="py-3 bg-white border-green-600 border-2 rounded  font-bold px-4"
+                  onClick={() => {
+                    ref.current.classList.add("blur-sm");
+                    setCategoryToggel(true);
+                  }}
                 >
-                  {myUser.token && (
-                    <div className="flex flex-wrap  justify-center ">
-                      {servicesData &&
-                        servicesData.map((key, index) => {
-                          return (
-                            <div
-                              key={index}
-                              className="w-[50%] md:w-[17.5rem]  "
-                            >
-                              <Link href={`/postDetail/${key.id}`}>
-                                <div className=" relative rounded-lg shadow-lg hover:shadow-xl cursor-pointer overflow-hidden my-2 md:mx-3 mx-1.5">
-                                  <div className=" relative  ">
-                                    <div className="flex justify-center relative opacity-100 object-contain bottom-0 transition-opacity duration-700 hover:opacity-100 overflow-hidden w-full ">
-                                      {!key.images[0] ? (
-                                        <Image
-                                          width={2}
-                                          height={2}
-                                          className="h-36 md:h-48 max-w-none  rounded-t-lg object-contain   p-4 -z-10  w-full bg-black   "
-                                          src={`${"/images/bizhub_logo.png"}`}
-                                          alt="Bizhub"
-                                        />
-                                      ) : (
-                                        <Image
-                                          width={2}
-                                          height={2}
-                                          className="h-36 md:h-48 max-w-none object-cover w-full  "
-                                          src={`${
-                                            !key.images[0]
-                                              ? "https://images.olx.com.pk/thumbnails/347296539-240x180.webp"
-                                              : HOST + key.images[0].image
-                                          }`}
-                                          alt="Bizhub"
-                                        />
-                                      )}
-                                      {key.thumbs_up == 1 && (
-                                        <div className="flex justify-end    absolute bottom-3 left-2">
-                                          <span className=" text-center sm:text-end block  text-xs  text-slate-100 font-normal ">
-                                            <span className="font-medium  text-xs  uppercase py-1 px-2 tracking-wide rounded-sm text-center bg-green-600">
-                                              featured
-                                            </span>{" "}
-                                          </span>
-                                        </div>
-                                      )}
-                                    </div>
-                                  </div>
-
-                                  <div className="py-2 md:px-3 px-2 border-green-600 border-l-8 rounded-b-lg">
-                                    <h5 className="mb-4 md:text-xl text-base md:font-semibold font-medium tracking-tight md:h-14 h-[2.7rem] text-gray-900">
-                                      {key.title.slice(0, 20)}
-                                      {key.title.length > 20 ? "..." : ""}
-                                    </h5>
-
-                                    <div className="flex md:my-2 my-1 align-middle items-center">
-                                      <div className="tracking-tight text-slate-800 text-center  align-middle md:text-xl text-base  font-medium md:font-bold title-font">
-                                        ${key.amount}
-                                      </div>
-                                      <div className="text-xs  text-gray-500 ml-auto text-center font-medium title-font ">
-                                        {new Date(
-                                          key.created_at
-                                        ).toLocaleDateString("PK-US", {
-                                          year: "numeric",
-                                          month: "short",
-                                          day: "numeric",
-                                        })}
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </Link>
-                            </div>
-                          );
-                        })}
-                    </div>
-                  )}
-
-                  {!myUser.token && (
-                    <div className="flex flex-wrap justify-center">
-                      {servicesDataNoAuth &&
-                        servicesDataNoAuth.map((key, index) => {
-                          return (
-                            <div
-                              key={index}
-                              className="w-[50%] md:w-[17.5rem]  "
-                            >
-                              <Link href={`/postDetail/${key.id}`}>
-                                <div className=" relative rounded-lg shadow-lg hover:shadow-xl cursor-pointer overflow-hidden my-2 md:mx-3 mx-1.5">
-                                  <div className=" relative  ">
-                                    <div className="flex justify-center opacity-100 object-contain bottom-0 transition-opacity duration-700 hover:opacity-100 overflow-hidden w-full ">
-                                      {!key.images[0] ? (
-                                        <Image
-                                          height={2}
-                                          width={2}
-                                          className="h-44 md:h-48  max-w-none  rounded-t-lg object-contain   p-4 -z-10  w-full bg-black   "
-                                          src={`${"/images/bizhub_logo.png"}`}
-                                          alt="Bizhub"
-                                        />
-                                      ) : (
-                                        <Image
-                                          height={2}
-                                          width={2}
-                                          className="h-44 md:h-48  max-w-none object-cover w-full  "
-                                          src={`${
-                                            !key.images[0]
-                                              ? "https://images.olx.com.pk/thumbnails/347296539-240x180.webp"
-                                              : HOST + key.images[0].image
-                                          }`}
-                                          alt="Bizhub"
-                                        />
-                                      )}
-                                    </div>
-                                    {key.thumbs_up == 1 && (
-                                      <div className="flex justify-end    absolute bottom-3 left-2">
-                                        <span className=" text-center sm:text-end block  text-xs  text-slate-100 font-normal ">
-                                          <span className="font-medium  text-xs  uppercase py-1 px-2 tracking-wide rounded-sm text-center bg-green-600">
-                                            featured
-                                          </span>{" "}
-                                        </span>
-                                      </div>
-                                    )}
-                                  </div>
-
-                                  <div className="py-2 md:px-3 px-2  border-green-600 border-l-8 rounded-b-lg">
-                                    <h5 className="mb-4 md:text-xl text-base md:font-semibold font-medium tracking-tight md:h-14 h-[2.7rem] text-gray-900">
-                                      {key.title.slice(0, 20)}
-                                      {key.title.length > 20 ? "..." : ""}
-                                    </h5>
-                                    <div className="flex md:my-2 my-1   align-middle items-center">
-                                      <sapn className="tracking-tight text-slate-800 text-center  align-middle md:text-xl text-base  font-medium md:font-bold title-font">
-                                        ${key.amount}
-                                      </sapn>
-                                      <sapn className="text-xs  text-gray-500 ml-auto text-center font-medium title-font ">
-                                        {new Date(
-                                          key.created_at
-                                        ).toLocaleDateString("PK-US", {
-                                          year: "numeric",
-                                          month: "short",
-                                          day: "numeric",
-                                        })}
-                                      </sapn>
-                                    </div>
-                                  </div>
-                                </div>
-                              </Link>
-                            </div>
-                          );
-                        })}
-                    </div>
-                  )}
-                </InfiniteScroll>
-              )}
+                  <FaFilter></FaFilter>
+                </button>
+              </div>
             </div>
           </div>
         </div>
+
+        <div className="md:my-12 my-5 pb-8" ref={ref}>
+          {loading ? (
+            ""
+          ) : (
+            <div className="flex justify-center mx-auto ">
+              {!myUser.token &&
+                servicesDataNoAuth &&
+                servicesDataNoAuth &&
+                servicesDataNoAuth.length == 0 &&
+                "No Post Available"}
+            </div>
+          )}
+          {loading ? (
+            ""
+          ) : (
+            <div className="flex justify-center mx-auto text-center w-70">
+              {myUser.token &&
+                servicesData &&
+                servicesData &&
+                servicesData.length == 0 &&
+                "No Post Available"}
+            </div>
+          )}
+          {loading ? (
+            <div className="flex justify-center  ">
+              <span className="flex justify-center  absolute  top-64">
+                <Spinner></Spinner>
+              </span>
+            </div>
+          ) : (
+            <InfiniteScroll
+              dataLength={
+                !myUser.token ? servicesDataNoAuth.length : servicesData.length
+              }
+              next={
+                !myUser.token ? fetchMoreServicesNoToken : fetchMoreServices
+              }
+              hasMore={totalResults == null ? false : true}
+              loader={
+                <span className=" w-80 mx-auto flex justify-center">
+                  <Spinner></Spinner>
+                </span>
+              }
+            >
+              {myUser.token && (
+                <div className="flex flex-wrap  justify-center ">
+                  {servicesData &&
+                    servicesData.map((key, index) => {
+                      return (
+                        <div key={index} className="w-[50%] md:w-[17.5rem]  ">
+                          <Link href={`/postDetail/${key.id}`}>
+                            <div className=" relative rounded-lg shadow-lg hover:shadow-xl cursor-pointer overflow-hidden my-2 md:mx-3 mx-1.5">
+                              <div className=" relative  ">
+                                <div className="flex justify-center relative opacity-100 object-contain bottom-0 transition-opacity duration-700 hover:opacity-100 overflow-hidden w-full ">
+                                  {!key.images[0] ? (
+                                    <Image
+                                      width={2}
+                                      height={2}
+                                      className="h-36 md:h-48 max-w-none  rounded-t-lg object-contain   p-4 -z-10  w-full bg-black   "
+                                      src={`${"/images/bizhub_logo.png"}`}
+                                      alt="Bizhub"
+                                    />
+                                  ) : (
+                                    <Image
+                                      width={2}
+                                      height={2}
+                                      className="h-36 md:h-48 max-w-none object-cover w-full  "
+                                      src={`${
+                                        !key.images[0]
+                                          ? "https://images.olx.com.pk/thumbnails/347296539-240x180.webp"
+                                          : HOST + key.images[0].image
+                                      }`}
+                                      alt="Bizhub"
+                                    />
+                                  )}
+                                  {key.thumbs_up == 1 && (
+                                    <div className="flex justify-end    absolute bottom-3 left-2">
+                                      <span className=" text-center sm:text-end block  text-xs  text-slate-100 font-normal ">
+                                        <span className="font-medium  text-xs  uppercase py-1 px-2 tracking-wide rounded-sm text-center bg-green-600">
+                                          featured
+                                        </span>{" "}
+                                      </span>
+                                    </div>
+                                  )}
+                                </div>
+                              </div>
+
+                              <div className="py-2 md:px-3 px-2 border-green-600 border-l-8 rounded-b-lg">
+                                <h5 className="mb-4 md:text-xl text-base md:font-semibold font-medium tracking-tight md:h-14 h-[2.7rem] text-gray-900">
+                                  {key.title.slice(0, 20)}
+                                  {key.title.length > 20 ? "..." : ""}
+                                </h5>
+
+                                <div className="flex md:my-2 my-1 align-middle items-center">
+                                  <div className="tracking-tight text-slate-800 text-center  align-middle md:text-xl text-base  font-medium md:font-bold title-font">
+                                    ${key.amount}
+                                  </div>
+                                  <div className="text-xs  text-gray-500 ml-auto text-center font-medium title-font ">
+                                    {new Date(
+                                      key.created_at
+                                    ).toLocaleDateString("PK-US", {
+                                      year: "numeric",
+                                      month: "short",
+                                      day: "numeric",
+                                    })}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </Link>
+                        </div>
+                      );
+                    })}
+                </div>
+              )}
+
+              {!myUser.token && (
+                <div className="flex flex-wrap justify-center">
+                  {servicesDataNoAuth &&
+                    servicesDataNoAuth.map((key, index) => {
+                      return (
+                        <div key={index} className="w-[50%] md:w-[17.5rem]  ">
+                          <Link href={`/postDetail/${key.id}`}>
+                            <div className=" relative rounded-lg shadow-lg hover:shadow-xl cursor-pointer overflow-hidden my-2 md:mx-3 mx-1.5">
+                              <div className=" relative  ">
+                                <div className="flex justify-center opacity-100 object-contain bottom-0 transition-opacity duration-700 hover:opacity-100 overflow-hidden w-full ">
+                                  {!key.images[0] ? (
+                                    <Image
+                                      height={2}
+                                      width={2}
+                                      className="h-44 md:h-48  max-w-none  rounded-t-lg object-contain   p-4 -z-10  w-full bg-black   "
+                                      src={`${"/images/bizhub_logo.png"}`}
+                                      alt="Bizhub"
+                                    />
+                                  ) : (
+                                    <Image
+                                      height={2}
+                                      width={2}
+                                      className="h-44 md:h-48  max-w-none object-cover w-full  "
+                                      src={`${
+                                        !key.images[0]
+                                          ? "https://images.olx.com.pk/thumbnails/347296539-240x180.webp"
+                                          : HOST + key.images[0].image
+                                      }`}
+                                      alt="Bizhub"
+                                    />
+                                  )}
+                                </div>
+                                {key.thumbs_up == 1 && (
+                                  <div className="flex justify-end    absolute bottom-3 left-2">
+                                    <span className=" text-center sm:text-end block  text-xs  text-slate-100 font-normal ">
+                                      <span className="font-medium  text-xs  uppercase py-1 px-2 tracking-wide rounded-sm text-center bg-green-600">
+                                        featured
+                                      </span>{" "}
+                                    </span>
+                                  </div>
+                                )}
+                              </div>
+
+                              <div className="py-2 md:px-3 px-2  border-green-600 border-l-8 rounded-b-lg">
+                                <h5 className="mb-4 md:text-xl text-base md:font-semibold font-medium tracking-tight md:h-14 h-[2.7rem] text-gray-900">
+                                  {key.title.slice(0, 20)}
+                                  {key.title.length > 20 ? "..." : ""}
+                                </h5>
+                                <div className="flex md:my-2 my-1   align-middle items-center">
+                                  <sapn className="tracking-tight text-slate-800 text-center  align-middle md:text-xl text-base  font-medium md:font-bold title-font">
+                                    ${key.amount}
+                                  </sapn>
+                                  <sapn className="text-xs  text-gray-500 ml-auto text-center font-medium title-font ">
+                                    {new Date(
+                                      key.created_at
+                                    ).toLocaleDateString("PK-US", {
+                                      year: "numeric",
+                                      month: "short",
+                                      day: "numeric",
+                                    })}
+                                  </sapn>
+                                </div>
+                              </div>
+                            </div>
+                          </Link>
+                        </div>
+                      );
+                    })}
+                </div>
+              )}
+            </InfiniteScroll>
+          )}
+        </div>
+
         {categoryToggel && (
-          <div class="fixed top-0 left-0 right-0 z-50    bg-white/60 filter bg-blend-color-burn w-full p-6 overflow-hidden  md:inset-0  ">
+          <div class="fixed top-0 left-0 right-0 z-50    backdrop-blur-sm  filter bg-blend-color-burn w-full p-6 overflow-hidden  md:inset-0  ">
             <div class="relative w-full max-w-2xl  mx-auto   justify-center  ">
-              <div className="flex  justify-center mx-auto min-h-screen  items-center  ">
-                <div className=" relative md:py-10 lg:px-16 md:px-6 py-9 px-6   bg-white  rounded-xl shadow-2xl shadow-current w-full">
+              <div className="flex  justify-center mx-auto min-h-screen  md:items-center items-start   ">
+                <div className=" relative md:py-10 lg:px-16 md:px-6 py-9 px-6   bg-white opacity-100 rounded-xl shadow-2xl shadow-current w-full">
                   <div
                     onClick={() => {
                       setCategoryToggel(false);
@@ -712,7 +701,7 @@ export default function Home({
                     <div className="flex space-x-2 text-2xl  font-bold text-gray-900  ">
                       <span>Category</span>
                     </div>
-                    <div className="md:flex  mt-8 grid grid-cols-2 gap-y-8 flex-wrap">
+                    <div className="md:flex  mt-8 grid grid-cols-2 gap-y-5 flex-wrap">
                       {categoryFilterData &&
                         categoryFilterData.map((key) => {
                           return (
@@ -791,9 +780,9 @@ export default function Home({
           </div>
         )}
         {locationToggel && (
-          <div class="fixed top-0 left-0 right-0 z-50    bg-white/60 filter bg-blend-color-burn w-full p-6  overflow-hidden  md:inset-0 ">
+          <div class="fixed top-0 left-0 right-0 z-50    backdrop-blur-sm  filter bg-blend-color-burn  w-full p-6  overflow-hidden  md:inset-0 ">
             <div class="relative w-full max-w-2xl  mx-auto   justify-center  ">
-              <div className="flex w-full justify-center mx-auto min-h-screen    items-center  ">
+              <div className="flex w-full justify-center mx-auto min-h-screen    md:items-center items-start  ">
                 <div className=" relative md:py-10 lg:px-16 md:px-6 py-9 px-6  mx-auto bg-white  rounded-xl shadow-2xl shadow-current w-full ">
                   <div
                     onClick={() => {
